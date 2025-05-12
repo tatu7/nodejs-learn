@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const path = require('path');
 require('dotenv').config();
 
 const productRoutes = require('./routes/product.route');
@@ -8,6 +9,9 @@ const authRoutes = require('./routes/auth.route');
 
 const app = express();
 app.use(express.json());
+
+// Serve static files from uploads directory
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // API Routes
 app.use('/api/products', productRoutes);

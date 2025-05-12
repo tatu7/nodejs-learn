@@ -3,9 +3,12 @@ GET http://localhost:10000/api/products
 ###
 POST http://localhost:10000/api/products
 Content-Type: application/json
+Authorization: Bearer 
 
 {
     "name": "Product 1",
     "price": 100
 }
+
+
 
