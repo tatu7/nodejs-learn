@@ -16,7 +16,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: 'http://localhost:3000',
+        url: 'https://nodejs-learn-gvvo.onrender.com',
         description: 'Development server',
       },
     ],
