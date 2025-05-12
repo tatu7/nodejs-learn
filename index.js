@@ -6,6 +6,7 @@ require('dotenv').config();
 const productRoutes = require('./routes/product.route');
 const emailRoutes = require('./routes/email.route');
 const authRoutes = require('./routes/auth.route');
+const swaggerSetup = require('./config/swagger');
 
 const app = express();
 app.use(express.json());
@@ -17,6 +18,9 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/api/products', productRoutes);
 app.use('/api/email', emailRoutes);
 app.use('/api/auth', authRoutes);
+
+// Setup Swagger
+swaggerSetup(app);
 
 app.get('/', (req, res) => {
   res.send('Hello World');
@@ -33,6 +37,7 @@ mongoose.connect(MONGODB_URI)
     console.log('Connected to MongoDB');
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
+      console.log(`Swagger documentation: http://localhost:${PORT}/api-docs`);
     });
   })
   .catch((err) => {
