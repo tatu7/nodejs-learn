@@ -4,12 +4,15 @@ require('dotenv').config();
 
 const productRoutes = require('./routes/product.route');
 const emailRoutes = require('./routes/email.route');
+const authRoutes = require('./routes/auth.route');
 
 const app = express();
 app.use(express.json());
 
+// API Routes
 app.use('/api/products', productRoutes);
 app.use('/api/email', emailRoutes);
+app.use('/api/auth', authRoutes);
 
 app.get('/', (req, res) => {
   res.send('Hello World');
