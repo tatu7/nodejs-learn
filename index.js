@@ -1,12 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 const productRoutes = require('./routes/product.route');
+const emailRoutes = require('./routes/email.route');
 
 const app = express();
 app.use(express.json());
 
 app.use('/api/products', productRoutes);
+app.use('/api/email', emailRoutes);
 
 app.get('/', (req, res) => {
   res.send('Hello World');
